@@ -17,80 +17,76 @@
 
         .container {
             display: flex;
-            flex-direction: column;
+            flex-direction: row;
+            justify-content: space-between;
             width: 80%;
             max-width: 800px;
-        }
-
-        .card {
-            background-color: #fff;
-            color: #000;
-            border: 2px solid #ddd;
-            border-radius: 10px;
-            padding: 20px;
-            margin-bottom: 20px;
-            font-size: 1rem;
-            text-align: center;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-            position: relative;
-            width: 380px; /* Adjust width as needed for a taller card */
-            height: 280px; /* Adjust height as needed for a shorter card */
         }
 
         .prompt-card {
             background-color: #800080; /* Purple background color */
             color: #fff;
+            border: 2px solid #800080; /* Purple border */
+            border-radius: 15px; /* Rounded edges */
+            padding: 20px;
+            font-size: 1.2rem; /* Adjust font size as needed */
+            text-align: center;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* Add a subtle shadow */
+            width: calc(50% - 20px); /* 50% width with some spacing */
+        }
+
+        .answer-cards {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            width: calc(50% - 20px); /* 50% width with some spacing */
         }
 
         .answer-card {
             background-color: #008000; /* Green background color */
             color: #fff;
+            border: 2px solid #008000; /* Green border */
+            border-radius: 15px; /* Rounded edges */
+            padding: 10px;
+            margin-bottom: 10px;
             cursor: pointer;
+            text-align: center;
+            font-size: 1rem; /* Adjust font size as needed */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* Add a subtle shadow */
         }
 
         .answer-card:hover {
             background-color: #006400; /* Darker green on hover */
         }
 
-        #answer-cards {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: flex-start;
-        }
-
         #selected-answer {
             background-color: #fff;
             color: #000;
             border: 2px solid #ddd;
-            border-radius: 10px;
+            border-radius: 15px;
             padding: 10px;
             text-align: center;
             font-size: 1rem;
             margin-top: 10px;
-            width: 380px; /* Adjust width as needed for a taller card */
-            height: 280px; /* Adjust height as needed for a shorter card */
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>Cards Against Humanity</h1>
-        
-        <div class="card prompt-card" id="prompt-card">
+        <div class="prompt-card" id="prompt-card">
             <h2>Prompt:</h2>
             <p>Why did the chicken cross the road?</p>
         </div>
         
-        <h2>Your Answer Cards:</h2>
-        <div id="answer-cards">
-            <div class="card answer-card" onclick="selectAnswer(this)">A bucket of fried chicken</div>
-            <div class="card answer-card" onclick="selectAnswer(this)">Wearing underwear inside out to get an extra day</div>
-            <div class="card answer-card" onclick="selectAnswer(this)">Dancing like nobody's watching</div>
+        <div class="answer-cards" id="answer-cards">
+            <div class="answer-card" onclick="selectAnswer(this)">A bucket of fried chicken</div>
+            <div class="answer-card" onclick="selectAnswer(this)">Wearing underwear inside out to get an extra day</div>
+            <div class="answer-card" onclick="selectAnswer(this)">Dancing like nobody's watching</div>
         </div>
-        
-        <h2>Selected Answer:</h2>
-        <div id="selected-answer" class="card"></div>
     </div>
+
+    <h2>Selected Answer:</h2>
+    <div id="selected-answer" class="card"></div>
 
     <script>
         function selectAnswer(card) {
