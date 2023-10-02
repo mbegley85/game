@@ -1,23 +1,67 @@
-<!-- index.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Card Game</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Cards Against Humanity</title>
+    <style>
+        /* Add your CSS styles here */
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .prompt-card {
+            background-color: #f7f7f7;
+            border: 1px solid #ddd;
+            padding: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .answer-card {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            padding: 10px;
+            margin: 5px;
+            cursor: pointer;
+        }
+        
+        .answer-card:hover {
+            background-color: #eee;
+        }
+    </style>
 </head>
 <body>
-    <div class="game-container">
-        <div class="communal-card" id="communal-card">
-            <h2>Communal Challenge Card</h2>
-            <div class="challenge-title" id="challenge-title"></div>
-            <div class="challenge-prompt" id="challenge-prompt"></div>
+    <div class="container">
+        <h1>Cards Against Humanity</h1>
+        
+        <div class="prompt-card" id="prompt-card">
+            <h2>Prompt:</h2>
+            <p>Why did the chicken cross the road?</p>
         </div>
-        <div class="player-hand" id="player-hand">
-            <h2>Player's Accelerator Cards</h2>
+        
+        <h2>Your Answer Cards:</h2>
+        <div id="answer-cards">
+            <div class="answer-card" onclick="selectAnswer(this)">A bucket of fried chicken</div>
+            <div class="answer-card" onclick="selectAnswer(this)">Wearing underwear inside out to get an extra day</div>
+            <div class="answer-card" onclick="selectAnswer(this)">Dancing like nobody's watching</div>
         </div>
+        
+        <h2>Selected Answer:</h2>
+        <div id="selected-answer"></div>
     </div>
-    <script src="script.js"></script>
+
+    <script>
+        function selectAnswer(card) {
+            const selectedAnswer = card.textContent;
+            document.getElementById('selected-answer').textContent = selectedAnswer;
+        }
+    </script>
 </body>
 </html>
